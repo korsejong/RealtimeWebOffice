@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/directory', (req, res) => {
+router.get('/', (req, res) => {
 
 });
 
-router.post('/directory', (req,res) => {
+router.post('/', (req,res) => {
 
 });
 
-router.put('/directory', (req,res) => {
+router.put('/', (req,res) => {
 
 });
 
-router.delete('/directory',(req,res) => {
+router.delete('/',(req,res) => {
 
 });
 
