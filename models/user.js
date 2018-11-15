@@ -9,6 +9,7 @@ const userSchema = new Schema ({
     },
     email : {
         type : String,
+        unique : true,
         required : true
     },
     password : {
@@ -16,14 +17,21 @@ const userSchema = new Schema ({
         required : true
     },
     salt : {
-        tpye : String,
+        type : String,
         default : null
     },
     deleted : {
         type : Boolean,
         default: false
     }
+},
+{ 
+    timestamps: { 
+        createdAt: 'created_at', 
+        updatedAt: 'updated_at'
+    } 
 });
+
 
 userSchema.pre('save', function(next){
     if(this.password && this.salt == null) {

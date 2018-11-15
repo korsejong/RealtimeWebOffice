@@ -14,7 +14,7 @@ const fileSchema = new Schema ({
         type : Schema.Types.ObjectId, 
         ref : 'User'
     },
-    partner : [{
+    partners : [{
         type : Schema.Types.ObjectId, 
         ref : 'User'
     }],
@@ -23,13 +23,19 @@ const fileSchema = new Schema ({
         ref : 'Directory'
     },
     opened : {
-        tpye : Boolean,
+        type : Boolean,
         default : false
     },
     deleted : {
         type : Boolean,
         default: false
     }
+},
+{ 
+    timestamps: { 
+        createdAt: 'created_at', 
+        updatedAt: 'updated_at'
+    } 
 });
 
 module.exports = mongoose.model('File', fileSchema);

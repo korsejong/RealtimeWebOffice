@@ -11,9 +11,9 @@ const controllerManager = require('./config/controllerManager');
 const app = express();
 
 // mongoDB setup
-// mongoose.Promise = global.Promise;
-// mongoose.set('debug', true);
-// mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+mongoose.set('debug', true);
+mongoose.connect(mongoDB);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
