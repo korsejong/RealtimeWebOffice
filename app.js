@@ -13,7 +13,7 @@ const app = express();
 // mongoDB setup
 mongoose.Promise = global.Promise;
 mongoose.set('debug', true);
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB,  { useCreateIndex :  true, useNewUrlParser: true });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
