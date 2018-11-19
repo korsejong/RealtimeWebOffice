@@ -1,0 +1,159 @@
+{
+    "user": {
+        "name": "first user",
+        "password": "pass",
+        "email": "email@mail.com"
+    },
+    "file": {
+        "name": "first file",
+        "type": "Document",
+        "owner": null,
+        "partners": [],
+        "path": null,
+        "opened": true
+    },
+    "directory": {
+        "name": "first directory",
+        "owner": null,
+        "partners": [],
+        "path": null,
+        "opened": true
+    },
+    "users": [
+        {
+            "name": "user1",
+            "password": "pass",
+            "email": "email1@mail.com"
+        },
+        {
+            "name": "user2",
+            "password": "pass",
+            "email": "email2@mail.com"
+        },
+        {
+            "name": "user3",
+            "password": "pass",
+            "email": "email3@mail.com"
+        },
+        {
+            "name": "user4",
+            "password": "pass",
+            "email": "email4@mail.com"
+        }
+    ],
+    "files": [
+        {
+            "name": "directory 1 - file 1",
+            "type": "Document",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true       
+        },
+        {
+            "name": "directory 1 file 2",
+            "type": "Document",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true       
+        },
+        {
+            "name": "directory 1-1 file 1",
+            "type": "Document",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true       
+        },
+        {
+            "name": "directory 1-2-1 file 1",
+            "type": "Document",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true       
+        },
+        {
+            "name": "directory 2 file 1",
+            "type": "Document",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true       
+        },
+        {
+            "name": "directory 2-1-1 file 1",
+            "type": "Document",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true       
+        }
+    ],
+    "directories":[
+        {
+            "name": "directory 1",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 1-1",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 1-2",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 1-1-1",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 1-1-2",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 1-2-1",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 2",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 2-1",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        },
+        {
+            "name": "directory 2-1-1",
+            "owner": null,
+            "partners": [],
+            "path": null,
+            "opened": true
+        }
+    ]
+}

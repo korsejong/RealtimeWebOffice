@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -18,5 +19,10 @@
   "main": "app.js",
   "author": "Sejong Choi",
   "license": "MIT",
-  "description": "application that can share and edit documents in real time"
+  "description": "application that can share and edit documents in real time",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "node-mocks-http": "^1.7.3",
+    "should": "^13.2.3"
+  }
 }

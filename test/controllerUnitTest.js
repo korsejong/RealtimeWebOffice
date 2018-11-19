@@ -1,1 +1,0 @@
-const api = require('../controller/api');

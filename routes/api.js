@@ -1,6 +1,15 @@
 const _Directory = require('../models/directory');
 const _File = require('../models/file');
 const _User = require('../models/user');
+const passport = require('passport');
+
+const isUser = (req, res) => {
+    if ( req.isAuthenticated() ) {
+        next();
+    } else {
+        res.redirect( '/' );
+    }
+}
 
 const renderIndex = (req, res) => {
     res.render('index');
@@ -48,6 +57,7 @@ const renderPublicDashboardOfPath = async (req, res) => {
 };
 
 module.exports = {
+    isUser: isUser,
     renderIndex: renderIndex,
     renderTexteditor: renderTexteditor,
     renderDashboard: renderDashboard,
