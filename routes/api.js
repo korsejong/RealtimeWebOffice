@@ -10,14 +10,12 @@ const isUser = (req, res) => {
         res.redirect( '/' );
     }
 }
-
 const renderIndex = (req, res) => {
     res.render('index');
 }
-const renderTexteditor = async (req, res) => {
-    let file = await _File.findById(req.params.path);
+const renderTexteditor = (req, res) => {
     res.render('texteditor',{
-        //
+        id : req.params.id
     });
 };
 const renderDashboard = async (req, res) => {

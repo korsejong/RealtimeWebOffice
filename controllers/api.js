@@ -58,10 +58,10 @@ const createPartnerOfDirectory = async (req,res) => {
             if(cur.partners.length == 0) cur.opened = false;
             else cur.opened = true;
             cur.save();
-            let sub = await _Directory.find({path:cur.id});
-            for(e of sub) stack.push(e);
-            let subFile = await _File.find({path:cur.id}); 
-            for(e of subFile){
+            let subDirectories = await _Directory.find({path:cur.id});
+            for(e of subDirectories) stack.push(e);
+            let subFiles = await _File.find({path:cur.id}); 
+            for(e of subFiles){
                 e.partners = partners;
                 e.save();
             }
@@ -93,10 +93,10 @@ const updatePartnerOfDirectory = async (req, res) => {
             if(cur.partners.length == 0) cur.opened = false;
             else cur.opened = true;
             cur.save();
-            let sub = await _Directory.find({path:cur.id});
-            for(e of sub) stack.push(e);
-            let subFile = await _File.find({path:cur.id}); 
-            for(e of subFile){
+            let subDirectories = await _Directory.find({path:cur.id});
+            for(e of subDirectories) stack.push(e);
+            let subFiles = await _File.find({path:cur.id}); 
+            for(e of subFiles){
                 e.partners = partners;
                 e.save();
             }
@@ -184,6 +184,15 @@ const createPartnerOfFile = async (req, res) => {
         file.partners = file.partners.concat(partners);
         if(file.partners.length == 0) file.opened = false;
         else file.opened = true;
+        let pathId = file.path;
+        while(pathId != null){
+            let f = await _Directory.findById(pathId);
+            f.partners = f.partners.concat(partners);
+            if(f.partners.length == 0) f.opened = false;
+            else f.opened = true;
+            f.save();
+            pathId = f.path;
+        }
         await file.save();
         res.send(file);
     } catch (e) {
@@ -207,6 +216,15 @@ const updatePartnerOfFile = async (req, res) => {
         file.partners = partners;
         if(file.partners.length == 0) file.opened = false;
         else file.opened = true;
+        let pathId = file.path;
+        while(pathId != null){
+            let f = await _Directory.findById(pathId);
+            f.partners = f.partners.concat(partners);
+            if(f.partners.length == 0) f.opened = false;
+            else f.opened = true;
+            f.save();
+            pathId = f.path;
+        }
         await file.save();
         res.send(file);
     } catch (e) {

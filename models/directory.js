@@ -16,7 +16,8 @@ const directorySchema = new Schema ({
     }],
     path : {
         type : Schema.Types.ObjectId,
-        ref : 'Directory'
+        ref : 'Directory',
+        default: null
     },
     opened : {
         type : Boolean,

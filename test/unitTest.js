@@ -523,5 +523,32 @@ describe('Controller', () =>{
                 });
             });
         });
+        describe('Directory - POST', () => {
+            it('this is a directory partner create test', (done) => {
+                let request = httpMocks.createRequest({
+                    method: 'POST',
+                    url: '/directory/partner',
+                    params: {
+                        id: directory.id
+                    },
+                    body: {
+                        partners: partners
+                    }
+                });
+                let response = httpMocks.createResponse({ eventEmitter: eventEmitter });
+                controllerAPI.createPartnerOfDirectory(request, response);
+                response.on('end', () => {
+                    let data = response._getData();
+                    response.statusCode.should.be.equal(200);
+                    data.should.be.instanceOf(Object)
+                        .and.have.properties(['id','name','owner','partners','path','opened','deleted']);
+                    data.name.should.be.equal(directory.name);
+                    data.partners.should.have.length(partners.length);
+                    data.opened.should.be.equal(true);
+                    data.deleted.should.be.equal(false);
+                    done();
+                });
+            });
+        });
     });
 });

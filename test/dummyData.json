@@ -23,22 +23,22 @@
         {
             "name": "user1",
             "password": "pass",
-            "email": "email1@mail.com"
+            "email": "email123@mail.com"
         },
         {
             "name": "user2",
             "password": "pass",
-            "email": "email2@mail.com"
+            "email": "email234@mail.com"
         },
         {
             "name": "user3",
             "password": "pass",
-            "email": "email3@mail.com"
+            "email": "email345@mail.com"
         },
         {
             "name": "user4",
             "password": "pass",
-            "email": "email4@mail.com"
+            "email": "email456@mail.com"
         }
     ],
     "files": [
