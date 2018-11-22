@@ -1,4 +1,46 @@
 extends layout
 
 block content
-  h1 index
+  .main-wrap
+    input(id="login",type="radio",name="type",checked="checked").hidden
+    label(for="login").login
+      .float
+        .title Sign in
+        .form-line
+          label(for="loginID") Your ID
+        .form-line
+          input#loginID(type="text")
+        .form-line
+          label(for="loginPW") Password
+        .form-line
+          input#loginPW(type="password")
+        button#postLogin.lastBtn Login
+      button#goSignup Create Account
+    input(id="signup",type="radio",name="type").hidden
+    label(for="signup").signup-form
+      .float
+        .title Sign up
+        .form-line
+          label(for="signupID") ID
+        .form-line
+          input#signupID(type="text")
+        .form-line
+          label(for="signupPW") Password
+        .form-line
+          input#signupPW(type="password")
+        .form-line
+          label(for="signupPWRepeat") Repeat Password
+        .form-line
+          input#signupPWRepeat(type="password")
+        .form-line
+          label(for="signupEmail") Email
+        .form-line
+          input#signupEmail(type="text") 
+        button#postSignup.lastBtn Sign up
+    input(id="folder",type="radio",name="type").hidden
+    label(for="folder").folder
+      .floating
+        .title My Folder
+  script(src="/scripts/jquery-3.3.1.min.js")
+  script(src="/scripts/main.js")
+
