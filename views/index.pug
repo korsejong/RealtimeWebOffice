@@ -6,22 +6,23 @@ block content
     label(for="login").login
       .float
         .title Sign in
-        .form-line
-          label(for="loginID") Your ID
-        .form-line
-          input#loginID(type="text")
-        .form-line
-          label(for="loginPW") Password
-        .form-line
-          input#loginPW(type="password")
-        button#postLogin.lastBtn Login
+        form(action="/signin" method="post")
+          .form-line
+            label(for="loginID") Email
+          .form-line
+            input#loginID(type="text" name="email")
+          .form-line
+            label(for="loginPW") Password
+          .form-line
+            input#loginPW(type="password" name="password")
+          input#postLogin.lastBtn(type="submit" value="Login")
       button#goSignup Create Account
     input(id="signup",type="radio",name="type").hidden
     label(for="signup").signup-form
       .float
         .title Sign up
         .form-line
-          label(for="signupID") ID
+          label(for="signupID") Email Address
         .form-line
           input#signupID(type="text")
         .form-line
@@ -32,19 +33,7 @@ block content
           label(for="signupPWRepeat") Repeat Password
         .form-line
           input#signupPWRepeat(type="password")
-        .form-line
-          label(for="signupEmail") Email
-        .form-line
-          input#signupEmail(type="text") 
         button#postSignup.lastBtn Sign up
-    input(id="folder",type="radio",name="type").hidden
-    label(for="folder").folder
-      .floating
-        .title My Folder
   script(src="/scripts/jquery-3.3.1.min.js")
-<<<<<<< HEAD
-  script(src="/scripts/main.js")
-=======
   script(src="/scripts/main.js")
 
->>>>>>> 8b112ec47a58d929716e709de73f6a680b362737

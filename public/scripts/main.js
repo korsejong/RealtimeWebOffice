@@ -1,10 +1,9 @@
 $(document).ready(function(){
-  $('#signup').click(function(){
-    let space = +($('.login').css('margin-right').split('px')[0]) + 750;
-    $('.login').css('margin-left', -space + 'px');
-  });
-
+  // if 'create account' clicked
   $('#goSignup').click(function(){
+    // make #signup checked
     $('#signup').click();
   });
+
+
 });
