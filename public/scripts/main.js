@@ -7,8 +7,7 @@ $(document).ready(function(){
 
   $('#postSignup').click(function(){
     const user = {
-      name: $('#signupID').val(),
-      email: $('#signupEmail').val(),
+      email: $('#signupID').val(),
       password: $('#signupPW').val(),
     };
     $.ajax({
