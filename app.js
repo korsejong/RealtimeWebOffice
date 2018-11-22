@@ -3,9 +3,11 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const passport = require('passport');
 const mongoose = require('mongoose');
 const mongoDB = `mongodb://127.0.0.1:27017/RealtimeWebOffice`;
 
+const passportManager = require('./config/passportManager');
 const routerManager = require('./config/routerManager');
 const controllerManager = require('./config/controllerManager');
 const app = express();
@@ -24,6 +26,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+passportManager(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 routerManager(app);
 controllerManager(app);
