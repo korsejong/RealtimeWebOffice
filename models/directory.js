@@ -35,4 +35,37 @@ const directorySchema = new Schema ({
     } 
 });
 
+directorySchema.statics = {
+    getPrivateDirectories(user, path){
+        if(!path) path = null;
+        return this.find(
+            {
+                path: path,
+                owner: user,
+                opened: false,
+                deleted: false,
+            }
+        );
+    },
+    getPublicDirectories(user, path){
+        if(!path) path = null;
+        return this.find({
+            $or: [
+                {
+                    path: path,
+                    owner: user,
+                    opened: true,
+                    deleted: false,
+                },
+                {
+                    path: path,
+                    opened: true,
+                    partners: user,
+                    deleted: false,
+                }
+            ]
+        });
+    }
+}
+
 module.exports = mongoose.model('Directory', directorySchema);

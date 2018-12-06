@@ -2,20 +2,20 @@ const User = require('../models/user');
 const LocalStrategy = require('passport-local').Strategy;
 module.exports = (passport) => {
     passport.serializeUser( ( user, done ) => {
-        done( null, user.id );
+        done( null, user );
     });
-    passport.deserializeUser( ( id, done ) => {
-        User.findById( id, ( err, user ) => {
-            done( err, user );
-        });
+    passport.deserializeUser( ( user, done ) => {
+        done( null, user );
+        // User.findById( id, ( err, user ) => {
+        //     done( err, user );
+        // });
     });
 
     // default local strategy
     passport.use( new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
-        passReqToCallback: true,
-        session: true
+        passReqToCallback: true
     }, ( req, id, pw, done ) => {
         let trimStr = id.toString().trim();
         User.findOne({ email: trimStr, deleted: false },  (err, user) => {
@@ -27,15 +27,17 @@ module.exports = (passport) => {
                     return done(null, false);
                 }
                 //no user
-                if (!user)
+                if (!user){
                     return done(null, false);
+                }
                 // no exist password
                 if (!user.isExistPassword()) {
                     return done(null, false);
                 }
                 // password wrong
-                if (!user.validPassword(pw))
+                if (!user.validPassword(pw)){
                     return done(null, false);
+                }
                 // done
                 done(null, user);
             });

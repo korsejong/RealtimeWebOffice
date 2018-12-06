@@ -3,7 +3,7 @@ const _File = require('../models/file');
 const _User = require('../models/user');
 const passport = require('passport');
 
-const isUser = (req, res) => {
+const isUser = (req, res, next) => {
     if ( req.isAuthenticated() ) {
         next();
     } else {
@@ -19,39 +19,49 @@ const renderTexteditor = (req, res) => {
     });
 };
 const renderDashboard = async (req, res) => {
-    res.render('dashboard');
+    let privateDirectories = await _Directory.getPrivateDirectories(req.user, null);
+    let publicDirectories = await _Directory.getPublicDirectories(req.user, null);
+    let privateFiles = await _File.getPrivateFiles(req.user, null);
+    let publicFiles = await _File.getPublicFiles(req.user, null);
+    res.render('dashboard',{
+        user: req.user,
+        privateDirectories: privateDirectories,
+        publicDirectories: publicDirectories,
+        privateFiles: privateFiles,
+        publicFiles: publicFiles
+    });
 };
 const renderPrivateDashboard = async (req, res) => {
-    let files = await _File.find();
-    let directories = await _Directory.find();
+    let privateDirectories = await _Directory.getPrivateDirectories(req.user, null);
+    let privateFiles = await _File.getPrivateFiles(req.user, null);
     res.render('dashboard', {
-        files: files,
-        directories: directories,
+        privateDirectories: privateDirectories,
+        privateFiles: privateFiles
     });
 };
 const renderPublicDashboard = async (req, res) => {
-    let files = await _File.find();
-    let directories = await _Directory.find();
+    let publicDirectories = await _Directory.getPublicDirectories(req.user, null);
+    let publicFiles = await _File.getPublicFiles(req.user, null);
     res.render('dashboard', {
-        files: files,
-        directories: directories,
-    }); 
+        publicDirectories: publicDirectories,
+        publicFiles: publicFiles,
+    });
 };
 const renderPrivateDashboardOfPath = async (req, res) => {
-    let files = await _File.find();
-    let directories = await _Directory.find();
+    let privateDirectories = await _Directory.getPrivateDirectories(req.user, req.params.path);
+    let privateFiles = await _File.getPrivateFiles(req.user, req.params.path);
     res.render('dashboard', {
-        files: files,
-        directories: directories,
-   });
+        privateDirectories: privateDirectories,
+        privateFiles: privateFiles
+    });
 };
 const renderPublicDashboardOfPath = async (req, res) => {
-    let files = await _File.find();
-    let directories = await _Directory.find();
+    let publicDirectories = await _Directory.getPublicDirectories(req.user, req.params.path);
+    let publicFiles = await _File.getPublicFiles(req.user, req.params.path);
     res.render('dashboard', {
-        files: files,
-        directories: directories,
-    }); 
+        publicDirectories: publicDirectories,
+        publicFiles: publicFiles,
+    });
 };
 
 module.exports = {

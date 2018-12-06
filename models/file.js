@@ -20,7 +20,8 @@ const fileSchema = new Schema ({
     }],
     path : {
         type : Schema.Types.ObjectId,
-        ref : 'Directory'
+        ref : 'Directory',
+        default: null
     },
     opened : {
         type : Boolean,
@@ -37,5 +38,38 @@ const fileSchema = new Schema ({
         updatedAt: 'updated_at'
     } 
 });
+
+fileSchema.statics = {
+    getPrivateFiles(user, path){
+        if(!path) path = null;
+        return this.find(
+            {
+                path: path,
+                owner: user,
+                opened: false,
+                deleted: false,
+            }
+        );
+    },
+    getPublicFiles(user, path){
+        if(!path) path = null;
+        return this.find({
+            $or: [
+                {
+                    path: path,
+                    owner: user,
+                    opened: true,
+                    deleted: false,
+                },
+                {
+                    path: path,
+                    opened: true,
+                    partners: user,
+                    deleted: false,
+                }
+            ]
+        });
+    }
+}
 
 module.exports = mongoose.model('File', fileSchema);

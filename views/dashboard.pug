@@ -3,7 +3,7 @@ extends layout
 block content
   .dashboard-wrap
     .user-menu
-      span.user-id id here
+      span.user-id=user.email
       button#signout Sign out
       span.create-menu
         button#createFile New Document
@@ -11,29 +11,29 @@ block content
     .folders
       .folder-title Private
       .folder.private
-        a(href="/folder/folderId").doc
-          .folder-img
-            .folder-icn
-          .doc-title asdasd
-        a(href="/texteditor").doc
-          .doc-img
-            .doc-icn
-          .doc-title my_document
+        - for(e of privateDirectories){
+            a(href=`/folder/${e.id}`).doc
+              .folder-img
+                .folder-icn
+              .doc-title=e.name
+        - }
+        - for(e of privateFiles){
+            a(href=`/texteditor/${e.id}`).doc
+              .doc-img
+                .doc-icn
+              .doc-title=e.name
+        - }
       .folder-title Public
       .folder.public
-        a(href="/texteditor").doc
-          .doc-img
-            .doc-icn
-          .doc-title my_document
-        a(href="/texteditor").doc
-          .doc-img
-            .doc-icn
-          .doc-title my_document  
-        a(href="/texteditor").doc
-          .doc-img
-            .doc-icn
-          .doc-title my_document
-        a(href="/texteditor").doc
-          .doc-img
-            .doc-icn
-          .doc-title my_document  
+        - for(e of publicDirectories){
+            a(href=`/folder/${e.id}`).doc
+              .folder-img
+                .folder-icn
+              .doc-title=e.name
+        - }
+        - for(e of publicFiles){
+            a(href=`/texteditor/${e.id}`).doc
+              .doc-img
+                .doc-icn
+              .doc-title=e.name
+        - }
