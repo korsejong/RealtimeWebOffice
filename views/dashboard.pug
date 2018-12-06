@@ -6,31 +6,31 @@ block content
       span.user-id=user.email
       submit#signout Sign out
       span.create-menu
+        input#newFileName(placeholder="write your file name...")
         button#createFile New Document
-        button#createFolder New Folder
     .folders
-      .folder-title Private
+      .folder-title Private Documents
       .folder.private
-        - for(e of privateDirectories){
-            a(href=`/folder/${e.id}`).doc
-              .folder-img
-                .folder-icn
-              .doc-title=e.name
-        - }
+        //- - for(e of privateDirectories){
+        //-     a(href=`/folder/${e.id}`).doc
+        //-       .folder-img
+        //-         .folder-icn
+        //-       .doc-title=e.name
+        //- - }
         - for(e of privateFiles){
             a(href=`/texteditor/${e.id}`).doc
               .doc-img
                 .doc-icn
               .doc-title=e.name
         - }
-      .folder-title Public
+      .folder-title Public Documents
       .folder.public
-        - for(e of publicDirectories){
-            a(href=`/folder/${e.id}`).doc
-              .folder-img
-                .folder-icn
-              .doc-title=e.name
-        - }
+        //- - for(e of publicDirectories){
+        //-     a(href=`/folder/${e.id}`).doc
+        //-       .folder-img
+        //-         .folder-icn
+        //-       .doc-title=e.name
+        //- - }
         - for(e of publicFiles){
             a(href=`/texteditor/${e.id}`).doc
               .doc-img

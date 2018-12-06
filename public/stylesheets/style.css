@@ -232,6 +232,18 @@ input:checked + label .form-line input:focus{
 .create-menu{
 	float: right;
 }
+.create-menu input{
+	background: none;
+	color: white;
+	border: none;
+	font-size: 16px;
+	border-bottom: 1px solid #ffffff66;
+	margin-right: 7px;
+	padding: 8px 2px;
+}
+.create-menu input::-webkit-input-placeholder{
+	color: #ffffff55
+}
 .create-menu button{
 	background: white;
 	padding: 8px 15px;
@@ -241,12 +253,10 @@ input:checked + label .form-line input:focus{
 	cursor: pointer;
 	transition: background .2s;
 	font-size: 16px;
+	border: 1px solid #ffffff11;
 }
 .create-menu button:hover{
 	background: #ffffff66;
-}
-.create-menu button:first-child{
-	margin-right: 5px;
 }
 #signout{
 	background: white;
@@ -263,12 +273,14 @@ input:checked + label .form-line input:focus{
 	background:rgba(255,255,255,0.2);
 	width: 100%;
 	padding: 30px;
+	box-shadow: 0 0 15px 0 #ffffff1f;
 }
 .folder-title{
-	font-size: 25px;
+	font-size: 20px;
 	margin-top: 30px;
 	margin-bottom: 5px;
 	font-weight: 100;
+	color: #ffffffaa;
 }
 .doc{
 	display: inline-block;
@@ -288,26 +300,10 @@ input:checked + label .form-line input:focus{
 	position: absolute;
 	top: 9px;
 	left: 9px;
-	background: url('/imgs/icn_doc_bl.png');
+	background: url('/imgs/icn_doc_wh.png');
 	width: 30px;
 	height: 30px;
 	background-size: 30px 30px;
-}
-.folder-img{
-	position: relative;
-	width: 50px;
-	height: 50px;
-	border-radius: 8px;
-	margin: 0 auto;
-}
-.folder-icn{
-	position: absolute;
-	top: 6px;
-	left: 6px;
-	background: url('/imgs/icn_folder_wh.png');
-	width: 40px;
-	height: 40px;
-	background-size: 40px 40px;
 }
 .doc-title{
 	padding-top: 12px;
