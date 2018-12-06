@@ -41,4 +41,18 @@ $(document).ready(function(){
       }
     });
   });
+
+  $('#signout').click(function(){
+    $.ajax({
+      type: 'POST',
+      url: '/signout',
+      success: function(results) {
+        alert('logouted');
+        location.href= '/';
+      },
+      error: function(xhr, status, err){
+        console.log(xhr);
+      }
+    });
+  });
 });
