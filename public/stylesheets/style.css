@@ -229,6 +229,25 @@ input:checked + label .form-line input:focus{
 	margin-right: 15px;
 	font-weight: bold;
 }
+.create-menu{
+	float: right;
+}
+.create-menu button{
+	background: white;
+	padding: 8px 15px;
+	background: #ffffff33;
+	border: none;
+	color: white;
+	cursor: pointer;
+	transition: background .2s;
+	font-size: 16px;
+}
+.create-menu button:hover{
+	background: #ffffff66;
+}
+.create-menu button:first-child{
+	margin-right: 5px;
+}
 #signout{
 	background: white;
 	border-radius: 15px;
@@ -268,10 +287,26 @@ input:checked + label .form-line input:focus{
 	position: absolute;
 	top: 9px;
 	left: 9px;
-	background: url('/imgs/icn_doc.png');
+	background: url('/imgs/icn_doc_bl.png');
 	width: 30px;
 	height: 30px;
 	background-size: 30px 30px;
+}
+.folder-img{
+	position: relative;
+	width: 50px;
+	height: 50px;
+	border-radius: 8px;
+	margin: 0 auto;
+}
+.folder-icn{
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	background: url('/imgs/icn_folder_wh.png');
+	width: 40px;
+	height: 40px;
+	background-size: 40px 40px;
 }
 .doc-title{
 	padding-top: 12px;

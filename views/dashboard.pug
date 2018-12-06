@@ -3,11 +3,18 @@ extends layout
 block content
   .dashboard-wrap
     .user-menu
-      span.user-id exanamu
+      span.user-id id here
       button#signout Sign out
+      span.create-menu
+        button#createFile New Document
+        button#createFolder New Folder
     .folders
       .folder-title Private
       .folder.private
+        a(href="/folder/folderId").doc
+          .folder-img
+            .folder-icn
+          .doc-title asdasd
         a(href="/texteditor").doc
           .doc-img
             .doc-icn
