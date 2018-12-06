@@ -23,6 +23,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+a{
+	text-decoration: none;
+}
 .hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -216,4 +219,65 @@ input:checked + label .form-line input:focus{
 	background: -webkit-linear-gradient(-45deg, rgba(64,76,183,0.7) 0%,rgba(64,76,183,0.7) 32%,rgba(5,183,109,0.7) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(135deg, rgba(64,76,183,0.7) 0%,rgba(64,76,183,0.7) 32%,rgba(5,183,109,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3404cb7', endColorstr='#b305b76d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.user-menu{
+	margin-bottom: 40px;
+	font-size: 40px;
+	font-weight: 100;
+}
+.user-id{
+	margin-right: 15px;
+	font-weight: bold;
+}
+#signout{
+	background: white;
+	border-radius: 15px;
+	border: none;
+	padding: 6px 15px;
+	vertical-align: middle;
+	font-size: 16px;
+	cursor: pointer;
+}
+.folder{
+	box-sizing: border-box;
+	background:rgba(255,255,255,0.2);
+	width: 100%;
+	padding: 30px;
+}
+.folder-title{
+	font-size: 25px;
+	margin-top: 30px;
+	margin-bottom: 5px;
+	font-weight: 100;
+}
+.doc{
+	display: inline-block;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.doc-img{
+	position: relative;
+	background: white;
+	width: 50px;
+	height: 50px;
+	border-radius: 8px;
+	margin: 0 auto;
+	box-shadow: 3px 3px 2px 0px #ccccccff;
+}
+.doc-icn{
+	position: absolute;
+	top: 9px;
+	left: 9px;
+	background: url('/imgs/icn_doc.png');
+	width: 30px;
+	height: 30px;
+	background-size: 30px 30px;
+}
+.doc-title{
+	padding-top: 12px;
+	max-width: 120px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	color: white;
 }
