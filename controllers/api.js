@@ -2,9 +2,17 @@ const _Directory = require('../models/directory');
 const _User = require('../models/user');
 const _File = require('../models/file');
 
+const isUser = (req, res, next) => {
+    if ( req.isAuthenticated() ) {
+        next();
+    } else {
+        res.send({error:'Access is denied'});
+    }
+}
 const createDirectory = async (req, res) => {
     try{
         let directory = new _Directory(req.body.directory);
+        directory.owner = req.user;
         await directory.save();
         res.send(directory);
     } catch(e) {
@@ -136,6 +144,7 @@ const deletePartnerOfDirectory = async (req,res) => {
 const createFile = async(req, res) => {
     try{
         let file = new _File(req.body.file);
+        file.owner = req.user;
         await file.save();
         res.send(file);
     } catch (e) {
@@ -291,6 +300,7 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+    isUser: isUser,
     createDirectory: createDirectory,
     createFile: createFile,
     createUser: createUser,
