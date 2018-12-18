@@ -10,7 +10,7 @@ block content
         button#createFile New Document
     .folders
       .folder-title Private Documents
-      .folder.private
+      .folder.private(ondrop='drop(event)' ondragover='allowDrop(event)')
         //- - for(e of privateDirectories){
         //-     a(href=`/folder/${e.id}`).doc
         //-       .folder-img
@@ -18,13 +18,13 @@ block content
         //-       .doc-title=e.name
         //- - }
         - for(e of privateFiles){
-            a(href=`/texteditor/${e.id}`).doc
+            a(href=`/texteditor/${e.id}` draggable='true' ondragstart='drag(event)').doc
               .doc-img
                 .doc-icn
               .doc-title=e.name
         - }
       .folder-title Public Documents
-      .folder.public
+      .folder.public(ondrop='drop(event)' ondragover='allowDrop(event)')
         //- - for(e of publicDirectories){
         //-     a(href=`/folder/${e.id}`).doc
         //-       .folder-img
@@ -32,7 +32,7 @@ block content
         //-       .doc-title=e.name
         //- - }
         - for(e of publicFiles){
-            a(href=`/texteditor/${e.id}`).doc
+            a(href=`/texteditor/${e.id}` draggable='true' ondragstart='drag(event)').doc
               .doc-img
                 .doc-icn
               .doc-title=e.name
