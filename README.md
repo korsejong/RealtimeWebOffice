@@ -2,7 +2,7 @@
 > Realtime web office is an application that can share and edit documents in real time
 
 ### Live Demo
-
+![demo](https://github.com/korsejong/RealtimeWebOffice/blob/master/ex.gif)
 ### Repo Structure
 * `config/` - router and controller related storage
 * `controllers/` - model controllers
