@@ -4,6 +4,8 @@ html(lang="kr")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    //- JQuery
+    script(src="/scripts/jquery-3.3.1.min.js")
     //- firebase
     script(src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js")
     //- CodeMirror
@@ -16,5 +18,19 @@ html(lang="kr")
     link(rel="stylesheet" href="/stylesheets/texteditor.css")
     script(src="/scripts/texteditor.js")
     title Realtime Web Office
-  body(onload = `init('${id}')`)
+  body(onload = `init('${file.id}')`)
+    .header
+      .title
+        input(type='text' value=file.name)#file-title
+        .firepad-btn-group
+          a.firepad-btn(onclick=`changeTitle()`) Change
+      .user-list
+        .firepad-btn-group
+          a.firepad-btn=owner
+        - for(partner of partners){
+          .firepad-btn-group
+            a.firepad-btn=partner
+        - }
+        .firepad-btn-group.last-element
+          a.firepad-btn(onclick=`addPartner()`) Add
     #firepad-container
