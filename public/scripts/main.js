@@ -16,9 +16,17 @@ $(document).ready(function(){
       contentType: 'application/json',
       data: JSON.stringify({user:user}),
       success: function(results) {
-        console.log(results);
+        alert('회원가입 완료');
+        $('#login').click();
+        $('#signupID').val('');
+        $('#signupPW').val('');
+        $('#signupPWRepeat').val('');
       },
       error: function(xhr, status, err){
+        alert('회원가입 실패');
+        $('#signupID').val('');
+        $('#signupPW').val('');
+        $('#signupPWRepeat').val('');
         console.log(xhr);
       },
     });
