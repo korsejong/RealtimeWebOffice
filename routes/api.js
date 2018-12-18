@@ -13,9 +13,17 @@ const isUser = (req, res, next) => {
 const renderIndex = (req, res) => {
     res.render('index');
 }
-const renderTexteditor = (req, res) => {
+const renderTexteditor = async (req, res) => {
+    let file = await _File.findById(req.params.id).populate('owner').populate('partners');
+    let owner = file.owner.email;
+    let partners = [];
+    for(e of file.partners){
+        partners.push(e.email);
+    }
     res.render('texteditor',{
-        id : req.params.id
+        file: file,
+        owner: owner,
+        partners: partners
     });
 };
 const renderDashboard = async (req, res) => {

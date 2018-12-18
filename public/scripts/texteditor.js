@@ -1,3 +1,63 @@
+let FILEID = '';
+const addPartnerHTML = (p,email) => {
+    p.before(`<div class='firepad-btn-group'><a class='firepad-btn'>${email}</a></div>`);
+}
+
+const addFileHTML = function(p,file){
+    p.append(`<a href='/texteditor/${file.id}' class='doc' draggable='true' ondragstart='drag(event)'>
+                <div class='doc-img'>
+                  <div class='doc-icn'></div>
+                </div>
+                <div class='doc-title'>${file.name}</div>
+              </a>`)
+  }
+  
+const changeTitle = () => {
+    let file = {
+        name: $('#file-title').val()
+    };
+    $.ajax({
+        type: 'PUT',
+        url: `/file/${FILEID}`,
+        contentType: 'application/json',
+        data: JSON.stringify({file:file}),
+        success: function(results){
+            console.log(results);
+        },
+        error: function(xhr, status, err){
+            console.log(xhr);
+        }
+    });
+}
+const addPartner = () => {
+    let email = prompt("Please enter user email", "");
+    if (email != null) {
+        $.ajax({
+            type: 'GET',
+            url: `/user/email/${email}`,
+            contentType: 'application/json',
+            data: '',
+            success: function(results){
+                let userId = results;
+                $.ajax({
+                    type: 'PUT',
+                    url: `/file/partner/${FILEID}`,
+                    contentType: 'application/json',
+                    data: JSON.stringify({partners:[userId]}),
+                    success: function(results){
+                        addPartnerHTML($('.last-element'),email);
+                    },
+                    error: function(xhr, ststus, err){
+                        console.log(xhr);
+                    }
+                });
+            },
+            error: function(xhr, ststus, err){
+                console.log(xhr);
+            }
+        });
+    }
+}
 const getRef = (id) => {
     let ref = firebase.database().ref();
     let hash = id;
@@ -9,6 +69,7 @@ const getRef = (id) => {
     return ref;
 }
 const init = (id) => {
+    FILEID = id;
     //// Initialize Firebase.
     //// TODO: replace with your Firebase project configuration.
     const config = {
