@@ -75,7 +75,7 @@ $(document).ready(function(){
       data: JSON.stringify({file:file}),
       success: function(results) {
         $('#newFileName').val('');
-        addFileHTML($('.private'),file);
+        addFileHTML($('.private'),results);
       },
       error: function(xhr, status, err){
         console.log(xhr);
@@ -85,7 +85,7 @@ $(document).ready(function(){
 });
 
 const addFileHTML = function(p,file){
-  p.append(`<a href='/texteditor/${file.id}' class='doc' draggable='true' ondragstart='drag(event)'>
+  p.append(`<a href='/texteditor/${file._id}' class='doc' draggable='true' ondragstart='drag(event)'>
               <div class='doc-img'>
                 <div class='doc-icn'></div>
               </div>
@@ -107,19 +107,8 @@ const drop = function(ev){
   let data = ev.dataTransfer.getData("text");
   let ele = document.getElementById(data)
   let id = $(ele).attr('href').split('/')[2];
-  let file = {};
+  let file = {opened: true};
   ev.target.appendChild(ele);
-  if($(ev.target).attr('class') == 'folder private'){
-    // private foler로 이동
-    file = {
-      opened: false
-    }
-  }else{
-    // public folder로 이동
-    file = {
-      opened: true
-    }
-  }
   $.ajax({
     type: 'PUT',
     url: `/file/${id}`,
