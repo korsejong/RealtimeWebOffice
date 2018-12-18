@@ -298,12 +298,22 @@ const deleteUser = async (req, res) => {
         res.status(400).send(e.message);
     }
 };
+const readUserByEmail = async (req, res) => {
+    try{
+        let user = await _User.findOne({email: req.params.email, deleted: false});
+        res.send(user.id);
+    } catch (e) {
+        console.log(e);
+        res.status(400).send(e.message);
+    }
+}
 
 module.exports = {
     isUser: isUser,
     createDirectory: createDirectory,
     createFile: createFile,
     createUser: createUser,
+    readUserByEmail: readUserByEmail,
     createPartnerOfDirectory: createPartnerOfDirectory,
     createPartnerOfFile: createPartnerOfFile,
     readDirectory: readDirectory,

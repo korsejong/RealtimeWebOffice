@@ -7,4 +7,6 @@ router.post('/', api.createUser);
 router.put('/:id', api.isUser, api.updateUser);
 router.delete('/:id', api.isUser, api.deleteUser);
 
+router.get('/email/:email', api.isUser, api.readUserByEmail);
+
 module.exports = router;
