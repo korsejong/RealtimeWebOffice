@@ -2,7 +2,6 @@ let FILEID = '';
 const addPartnerHTML = (p,email) => {
     p.before(`<div class='firepad-btn-group'><a class='firepad-btn'>${email}</a></div>`);
 }
-
 const addFileHTML = function(p,file){
     p.append(`<a href='/texteditor/${file.id}' class='doc' draggable='true' ondragstart='drag(event)'>
                 <div class='doc-img'>
@@ -10,8 +9,7 @@ const addFileHTML = function(p,file){
                 </div>
                 <div class='doc-title'>${file.name}</div>
               </a>`)
-  }
-  
+}
 const changeTitle = () => {
     let file = {
         name: $('#file-title').val()
@@ -28,6 +26,22 @@ const changeTitle = () => {
             console.log(xhr);
         }
     });
+}
+const deleteFile = () => {
+    if(confirm('정말로 삭제하시겠습니까?')){
+        $.ajax({
+            type: 'DELETE',
+            url: `/file/${FILEID}`,
+            contentType: 'application/json',
+            data: '',
+            success: function(results){
+                location.href= '/dashboard';
+            },
+            onerror: function(xhr, status, err){
+                console.log(xhr);
+            }
+        })
+    }
 }
 const addPartner = () => {
     let email = prompt("Please enter user email", "");
@@ -47,12 +61,12 @@ const addPartner = () => {
                     success: function(results){
                         addPartnerHTML($('.last-element'),email);
                     },
-                    error: function(xhr, ststus, err){
+                    error: function(xhr, status, err){
                         console.log(xhr);
                     }
                 });
             },
-            error: function(xhr, ststus, err){
+            error: function(xhr, status, err){
                 console.log(xhr);
             }
         });

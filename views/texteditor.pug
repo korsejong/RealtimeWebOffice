@@ -24,6 +24,10 @@ html(lang="kr")
         input(type='text' value=file.name)#file-title
         .firepad-btn-group
           a.firepad-btn(onclick=`changeTitle()`) Change
+        - if(user.email == owner){
+          .firepad-btn-group
+            a.firepad-btn(onclick=`deleteFile()`) Delete
+        - }
       .user-list
         .firepad-btn-group
           a.firepad-btn=owner

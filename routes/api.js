@@ -21,6 +21,7 @@ const renderTexteditor = async (req, res) => {
         partners.push(e.email);
     }
     res.render('texteditor',{
+        user: req.user,
         file: file,
         owner: owner,
         partners: partners
