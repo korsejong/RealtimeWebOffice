@@ -13,7 +13,7 @@ html(lang="kr")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css")
     //- Firepad
-    link(rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css")
+    link(rel="stylesheet" href="/stylesheets/firepad.css")
     script(src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js")
     link(rel="stylesheet" href="/stylesheets/texteditor.css")
     script(src="/scripts/texteditor.js")
@@ -23,18 +23,19 @@ html(lang="kr")
       .title
         input(type='text' value=file.name)#file-title
         .firepad-btn-group
-          a.firepad-btn(onclick=`changeTitle()`) Change
+          a.firepad-btn2(onclick=`changeTitle()`) Change
         - if(user.email == owner){
           .firepad-btn-group
-            a.firepad-btn(onclick=`deleteFile()`) Delete
+            a.firepad-btn2(onclick=`deleteFile()`) Delete
         - }
-      .user-list
-        .firepad-btn-group
-          a.firepad-btn=owner
-        - for(partner of partners){
+        .user-list
           .firepad-btn-group
-            a.firepad-btn=partner
-        - }
-        .firepad-btn-group.last-element
-          a.firepad-btn(onclick=`addPartner()`) Add
+            a.firepad-btn=owner
+          - for(partner of partners){
+            .firepad-btn-group
+              a.firepad-btn=partner
+          - }
+          .firepad-addwrap.last-element
+            a.firepad-useradd(onclick=`addPartner()`) +
+              .useradd-bg
     #firepad-container

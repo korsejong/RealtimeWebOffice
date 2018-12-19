@@ -254,6 +254,7 @@ input:checked + label .form-line input:focus{
 	transition: background .2s;
 	font-size: 16px;
 	border: 1px solid #ffffff11;
+	border-radius: 6px;
 }
 .create-menu button:hover{
 	background: #ffffff66;
@@ -273,7 +274,7 @@ input:checked + label .form-line input:focus{
 	background:rgba(255,255,255,0.2);
 	width: 100%;
 	padding: 30px;
-	box-shadow: 0 0 15px 0 #ffffff1f;
+	box-shadow: 0 0 10px 0 #ffffff1f;
 }
 .folder-title{
 	font-size: 20px;
@@ -285,31 +286,38 @@ input:checked + label .form-line input:focus{
 .doc{
 	display: inline-block;
 	margin-right: 20px;
-	margin-bottom: 20px;
+	padding: 15px 0;
 }
 .doc-img{
 	position: relative;
-	background: white;
+	background: transparent;
 	width: 50px;
 	height: 50px;
 	border-radius: 8px;
 	margin: 0 auto;
-	box-shadow: 3px 3px 2px 0px #ccccccff;
 }
 .doc-icn{
 	position: absolute;
-	top: 9px;
-	left: 9px;
+	top: 3px;
+	left: 3px;
 	background: url('/imgs/icn_doc_wh.png');
-	width: 30px;
-	height: 30px;
-	background-size: 30px 30px;
+	width: 40px;
+	height: 40px;
+	background-size: 40px 40px;
 }
 .doc-title{
-	padding-top: 12px;
-	max-width: 120px;
+	margin-top: 12px;
+	padding: 2px 3px;
+	width: 120px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 	color: white;
+	text-align: center;
+	background: #ffffff33;
+	transition: background .2s;
+	border-radius: 10px;
+}
+.doc:hover .doc-title{
+	background: #50cc9988;
 }

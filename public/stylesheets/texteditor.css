@@ -8,30 +8,73 @@ body {
 }
 .header {
     width: 100%;
-    height: 100px;
 }
 .title {
-    margin-left : 5px;
-    height: 50px;
+    box-sizing: border-box;
+    padding: 20px 10px;
+    background: -moz-linear-gradient(-45deg, rgba(64,76,183,0.7) 0%, rgba(64,76,183,0.7) 32%, rgba(5,183,109,0.7) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, rgba(64,76,183,0.7) 0%,rgba(64,76,183,0.7) 32%,rgba(5,183,109,0.7) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, rgba(64,76,183,0.7) 0%,rgba(64,76,183,0.7) 32%,rgba(5,183,109,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3404cb7', endColorstr='#b305b76d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.6);
+    position: relative;
+    z-index: 1;
 }
 .user-list {
-    margin-left : 10px;
-    height: 50px;
+    margin-left: 5px;
+}
+.user-list .firepad-btn{
+    background: transparent;
+    color: white;
+    border: 1px solid #ffffff;
+}
+.user-list .firepad-btn:hover{
+    background: #ffffff33;
+    border-color: transparent;
+}
+.firepad-addwrap{
+    position: relative;
+    display: inline-block;
+}
+.firepad-useradd{
+    cursor: pointer;
+    border-radius: 50%;
+    width: 20px;
+    display: inline-block;
+    height: 20px;
+    text-indent: 10px;
+    color: white;
+    font-size: 20px;
+}
+.useradd-bg{
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    top: 4px;
+    left: 6px;
+}
+.firepad-useradd:hover .useradd-bg{
+    background: #ffffff66;
 }
 input[type=text]{
     width: 700px;
-    border: 2px solid #aaa;
-    border-radius: 4px;
+    border: 2px solid transparent;
     margin: 8px 4px 8px 4px;
     outline: none;
-    padding: 8px;
     box-sizing: border-box;
-    transition: .3s;
-    font-size: 13px;
+    transition: .2s;
+    font-size: 20px;
+    margin-right: 7px;
+    padding: 5px 8px;
+    background: #ffffff11;
+    color: white;
 }
 input[type=text]:focus{
-    border-color: dodgerBlue;
-    box-shadow: 0 0 8px 0 dodgerBlue;
+    border-color: #ffffff33;
+    box-shadow: 0 0 8px 0 #ffffff33;
 }
 #firepad-container {
     width: 100%;
